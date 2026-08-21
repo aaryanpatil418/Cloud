@@ -1,0 +1,606 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cloud Computing Practical</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            color: white;
+            padding: 25px 50px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #082b63;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 16px 22px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #1976d2;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 420px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background:
+                linear-gradient(rgba(0, 40, 90, 0.75),
+                rgba(0, 40, 90, 0.75)),
+                url("https://images.unsplash.com/photo-1451187580459-43490279c0fa")
+                center/cover;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #ff9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e68900;
+        }
+
+        /* General Section */
+        section {
+            padding: 60px 8%;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 35px;
+            font-size: 32px;
+        }
+
+        /* About */
+        .about {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1565c0;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        /* Practicals */
+        .practical {
+            border-left: 5px solid #1976d2;
+        }
+
+        .practical-number {
+            background: #1976d2;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* Steps */
+        .steps {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .step {
+            background: white;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #ff9800;
+        }
+
+        .step strong {
+            color: #0d47a1;
+        }
+
+        /* SLA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #0d47a1;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5fa;
+        }
+
+        /* Resources */
+        .resources {
+            text-align: center;
+        }
+
+        .resources a {
+            display: inline-block;
+            margin: 8px;
+            padding: 12px 18px;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .resources a:hover {
+            background: #0d47a1;
+        }
+
+        /* Footer */
+        footer {
+            background: #082b63;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 7px;
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+
+            header {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+
+            nav a {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>☁️ Cloud Computing Practical</h1>
+        <p>Practical Learning Portal for Diploma Students</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#concepts">Concepts</a>
+        <a href="#practicals">Practicals</a>
+        <a href="#sla">SLA</a>
+        <a href="#resources">Resources</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div>
+            <h2>Welcome to Cloud Computing</h2>
+
+            <p>
+                Learn Cloud Computing concepts, virtualization,
+                cloud storage, AWS, OpenStack, VMware and practical
+                implementations through simple step-by-step practicals.
+            </p>
+
+            <a href="#practicals" class="btn">
+                View Practicals
+            </a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About Cloud Computing</h2>
+
+        <div class="about">
+            <p>
+                Cloud Computing is the delivery of computing services such
+                as servers, storage, databases, networking and software
+                through the Internet. It provides flexible resources,
+                scalability and cost-effective solutions.
+            </p>
+
+            <br>
+
+            <p>
+                This website provides learning material and practical
+                guidance for students studying Cloud Computing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Concepts -->
+    <section id="concepts">
+
+        <h2>Cloud Computing Concepts</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">☁️</div>
+                <h3>Cloud Computing</h3>
+                <p>
+                    Computing resources are provided over the Internet
+                    whenever they are required.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🖥️</div>
+                <h3>Virtualization</h3>
+                <p>
+                    Virtualization allows multiple virtual machines to
+                    operate on a single physical machine.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💾</div>
+                <h3>Cloud Storage</h3>
+                <p>
+                    Cloud storage allows users to store and access
+                    data through Internet-based storage services.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔐</div>
+                <h3>Cloud Security</h3>
+                <p>
+                    Cloud security protects applications, data and
+                    infrastructure from unauthorized access.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Scalability</h3>
+                <p>
+                    Cloud resources can be increased or decreased
+                    according to workload requirements.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌐</div>
+                <h3>Internet Services</h3>
+                <p>
+                    Cloud services can be accessed from anywhere using
+                    an Internet connection.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Practicals -->
+    <section id="practicals">
+
+        <h2>Cloud Computing Practicals</h2>
+
+        <div class="cards">
+
+            <div class="card practical">
+                <span class="practical-number">Practical 1</span>
+
+                <h3>Virtual Machine</h3>
+
+                <p>
+                    Create and configure a virtual machine using
+                    virtualization software.
+                </p>
+            </div>
+
+            <div class="card practical">
+                <span class="practical-number">Practical 2</span>
+
+                <h3>VMware</h3>
+
+                <p>
+                    Install VMware and create a virtual machine
+                    with an operating system.
+                </p>
+            </div>
+
+            <div class="card practical">
+                <span class="practical-number">Practical 3</span>
+
+                <h3>Cloud Storage</h3>
+
+                <p>
+                    Implement and understand cloud storage services
+                    and data accessibility.
+                </p>
+            </div>
+
+            <div class="card practical">
+                <span class="practical-number">Practical 4</span>
+
+                <h3>OpenStack</h3>
+
+                <p>
+                    Implement a storage service on cloud using
+                    OpenStack.
+                </p>
+            </div>
+
+            <div class="card practical">
+                <span class="practical-number">Practical 5</span>
+
+                <h3>AWS</h3>
+
+                <p>
+                    Understand basic AWS cloud services and
+                    launch cloud resources.
+                </p>
+            </div>
+
+            <div class="card practical">
+                <span class="practical-number">Practical 6</span>
+
+                <h3>HDFS</h3>
+
+                <p>
+                    Study Hadoop Distributed File System and
+                    distributed cloud storage.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OpenStack Steps -->
+    <section>
+
+        <h2>OpenStack Storage Practical</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <strong>Step 1:</strong>
+                Install and configure OpenStack.
+            </div>
+
+            <div class="step">
+                <strong>Step 2:</strong>
+                Login to the OpenStack Dashboard.
+            </div>
+
+            <div class="step">
+                <strong>Step 3:</strong>
+                Create a project and user.
+            </div>
+
+            <div class="step">
+                <strong>Step 4:</strong>
+                Configure storage resources.
+            </div>
+
+            <div class="step">
+                <strong>Step 5:</strong>
+                Create a volume using Cinder.
+            </div>
+
+            <div class="step">
+                <strong>Step 6:</strong>
+                Attach the volume to a virtual machine.
+            </div>
+
+            <div class="step">
+                <strong>Step 7:</strong>
+                Verify the storage service.
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SLA -->
+    <section id="sla">
+
+        <h2>Service Level Agreement (SLA)</h2>
+
+        <table>
+
+            <tr>
+                <th>SLA Parameter</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td>Availability</td>
+                <td>Expected uptime of the cloud service</td>
+            </tr>
+
+            <tr>
+                <td>Performance</td>
+                <td>Expected service performance</td>
+            </tr>
+
+            <tr>
+                <td>Security</td>
+                <td>Protection of data and resources</td>
+            </tr>
+
+            <tr>
+                <td>Support</td>
+                <td>Technical assistance provided by provider</td>
+            </tr>
+
+            <tr>
+                <td>Backup</td>
+                <td>Data backup and recovery provisions</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+
+        <h2>Learning Resources</h2>
+
+        <div class="resources">
+
+            <a href="https://www.openstack.org/" target="_blank">
+                OpenStack
+            </a>
+
+            <a href="https://aws.amazon.com/" target="_blank">
+                AWS
+            </a>
+
+            <a href="https://www.vmware.com/" target="_blank">
+                VMware
+            </a>
+
+            <a href="https://hadoop.apache.org/" target="_blank">
+                Hadoop
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>☁️ Cloud Computing Practical</h3>
+
+        <p>
+            Learning • Practicals • Cloud Technology
+        </p>
+
+        <p>
+            © 2026 Cloud Computing Practical Portal
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
